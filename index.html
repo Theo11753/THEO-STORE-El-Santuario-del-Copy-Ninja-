@@ -5,153 +5,216 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THEO STORE AI - OFICIAL</title>
     <style>
-        body {
-            background-color: #050505;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 { color: #00d4ff; text-shadow: 0 0 15px #00d4ff; margin-bottom: 5px; }
-        .sub { color: #555; font-size: 0.9em; margin-bottom: 30px; }
-        
-        .tienda-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        :root {
+            --neon-blue: #00d4ff;
+            --bg-dark: #050505;
+            --card-bg: #111;
         }
 
-        .tarjeta {
-            background: #111;
-            border: 2px solid #00d4ff;
-            border-radius: 20px;
-            padding: 15px;
-            width: 260px;
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 20px; 
+            overflow-x: hidden;
+        }
+
+        h1 { 
+            color: var(--neon-blue); 
+            text-shadow: 0 0 15px var(--neon-blue); 
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .sub-header { color: #555; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 2px; }
+
+        .container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 25px; 
+            margin-top: 20px; 
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            border: 2px solid #222; 
+            border-radius: 15px; 
+            width: 260px; 
+            padding: 15px; 
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .card img { 
+            width: 100%; 
+            border-radius: 10px; 
+            height: 140px; 
+            object-fit: cover; 
+            filter: grayscale(30%);
             transition: 0.3s;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
-        }
-        .tarjeta:hover { transform: scale(1.05); box-shadow: 0 0 20px #00d4ff; }
-
-        .img-juego {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 15px;
-            background-color: #222;
         }
 
-        .btn-descarga {
-            background-color: #00d4ff;
-            color: black;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 10px;
+        .card:hover img { filter: grayscale(0%); }
+
+        .btn { 
+            display: inline-block; 
+            background: var(--neon-blue); 
+            color: black; 
+            padding: 12px 25px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin-top: 15px; 
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: white;
+            box-shadow: 0 0 15px white;
+        }
+
+        #chat { 
+            margin-top: 50px; 
+            background: #0a0a0a; 
+            border: 1px solid #333; 
+            border-radius: 20px; 
+            padding: 20px; 
+            max-width: 450px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        #log { 
+            height: 200px; 
+            overflow-y: auto; 
+            text-align: left; 
+            font-size: 14px; 
+            border-bottom: 1px solid #222; 
+            margin-bottom: 15px; 
+        }
+
+        #log::-webkit-scrollbar { width: 5px; }
+        #log::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
+
+        .chat-input-area { display: flex; gap: 10px; }
+
+        input { 
+            flex: 1; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid #333; 
+            background: #000; 
+            color: white; 
+            outline: none;
+        }
+
+        .jutsu-btn { 
+            background: var(--neon-blue); 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            cursor: pointer; 
             font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            width: 80%;
         }
 
-        /* --- SECCIÓN CHAT --- */
-        #chat-container {
-            margin: 40px auto;
-            max-width: 500px;
-            background: #0a0a0a;
-            border: 2px solid #333;
-            padding: 15px;
-            border-radius: 20px;
-        }
-        #chat-log {
-            height: 200px;
-            overflow-y: auto;
-            border-bottom: 1px solid #222;
-            margin-bottom: 15px;
-            text-align: left;
-            padding: 10px;
-            font-size: 0.9em;
-        }
-        .input-box {
-            display: flex;
-            gap: 10px;
-        }
-        input {
-            flex-grow: 1;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #00d4ff;
-            background: #000;
-            color: white;
-        }
+        .writing { color: #555; font-style: italic; font-size: 12px; height: 20px; }
+
     </style>
 </head>
 <body>
 
     <h1>👁️ THEO STORE AI 👁️</h1>
-    <div class="sub">ALIANZA X&G - BY XTHEOR</div>
+    <p class="sub-header">ALIANZA X&G | ACTUALIZACIÓN COMPLETA</p>
 
-    <div class="tienda-container">
-        
-        <div class="tarjeta">
-            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=DIXMAC+OFICIAL" class="img-juego">
-            <h3>DIXMAC</h3>
-            <p>Series y Películas Gratis</p>
-            <a href="LINK_DE_DIXMAC_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
+    <div class="container">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=DIXMAX+V2.4.1" alt="DixMax">
+            <h3>DIXMAX</h3>
+            <p style="color: #aaa; font-size: 0.9rem;">Cine y Series Gratis v2.4.1</p>
+            <a href="https://www.mediafire.com/file/81mqs6hg8n4s1on/dixmax-v2.4.1.apk/file" target="_blank" class="btn">DESCARGAR</a>
         </div>
 
-        <div class="tarjeta">
-            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=STUMBLE+MOD" class="img-juego">
+        <div class="card">
+            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=STUMBLE+V0.95.5" alt="Stumble">
             <h3>STUMBLE MOD</h3>
-            <p>V0.64 - Skins Unlocked</p>
-            <a href="LINK_STUMBLE_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
+            <p style="color: #aaa; font-size: 0.9rem;">V0.95.5 MOD APK</p>
+            <a href="https://www.mediafire.com/file/we4xzaz2d0kink7/Stumble_Guys_v0.95.5_MOD.apk/file" target="_blank" class="btn">DESCARGAR</a>
         </div>
-
-        <div class="tarjeta">
-            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=GDASH+2.2" class="img-juego">
-            <h3>G-DASH 2.2</h3>
-            <p>Todo desbloqueado</p>
-            <a href="LINK_GDASH_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
-        </div>
-
     </div>
 
-    <div id="chat-container">
-        <h3 style="color:#00d4ff;">🤖 THEO-BOT (SISTEMA)</h3>
-        <div id="chat-log">
-            <p style="color: #00d4ff;">[IA]: XTHEOR, DixMac ha sido añadido a la base de datos.</p>
+    <div id="chat">
+        <h4 style="color:var(--neon-blue); margin:0 0 15px 0; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span style="width:10px; height:10px; background: #00ff00; border-radius: 50%; display: inline-block; box-shadow: 0 0 5px #00ff00;"></span>
+            THEO-BOT ONLINE
+        </h4>
+        <div id="log">
+            <p style="color:var(--neon-blue);"><b>[BOT]:</b> Enlaces de MediaFire verificados. ¿Listo para descargar, XTHEOR?</p>
         </div>
-        <div class="input-box">
-            <input type="text" id="user-input" placeholder="Pregunta sobre un Mod...">
-            <button onclick="enviarMensaje()" class="btn-descarga" style="width: auto; margin:0;">JUTSU</button>
+        <div id="status" class="writing"></div>
+        <div class="chat-input-area">
+            <input type="text" id="msg" placeholder="Pregunta por un mod..." autocomplete="off">
+            <button onclick="hablar()" class="jutsu-btn">JUTSU</button>
         </div>
     </div>
 
     <script>
-        function enviarMensaje() {
-            let input = document.getElementById("user-input");
-            let chatLog = document.getElementById("chat-log");
-            let texto = input.value.toLowerCase();
+        const box = document.getElementById("msg");
+        const log = document.getElementById("log");
+        const status = document.getElementById("status");
 
-            if (texto !== "") {
-                chatLog.innerHTML += `<p><b>TÚ:</b> ${texto}</p>`;
+        box.addEventListener("keypress", (e) => { if (e.key === "Enter") hablar(); });
+
+        function hablar() {
+            let t = box.value.trim().toLowerCase();
+            if(!t) return;
+
+            log.innerHTML += `<p style="margin: 5px 0;"><b>Tú:</b> ${t}</p>`;
+            box.value = "";
+            log.scrollTop = log.scrollHeight;
+
+            status.innerHTML = "Consultando Alianza X&G...";
+            
+            setTimeout(() => {
+                status.innerHTML = "";
+                let r = "No encuentro ese archivo. Prueba con 'DixMax' o 'Stumble'.";
                 
-                let respuesta = "Buscando en los archivos de la Alianza...";
-                if (texto.includes("hola")) respuesta = "¡A la orden, Sensei XTHEOR!";
-                if (texto.includes("dixmac")) respuesta = "DixMac está listo. Es la mejor opción para ver cine gratis.";
-                if (texto.includes("stumble")) respuesta = "El Mod Menu de Stumble ya está en la tienda.";
-                if (texto.includes("dash")) respuesta = "Geometry Dash 2.2 disponible para descarga.";
+                if(t.includes("dixmax")) r = "He actualizado el link a la v2.4.1. ¡Dale al botón azul!";
+                if(t.includes("stumble")) r = "Stumble Guys v0.95.5 está listo. El mod es muy potente.";
+                if(t.includes("hola")) r = "¡A la orden, XTHEOR! Todo el sistema está operativo.";
 
-                chatLog.innerHTML += `<p style="color: #00d4ff;"><b>BOT:</b> ${respuesta}</p>`;
-                input.value = "";
-                chatLog.scrollTop = chatLog.scrollHeight;
+                typeWriter(r);
+            }, 800);
+        }
+
+        function typeWriter(texto) {
+            let i = 0;
+            let botMsg = document.createElement("p");
+            botMsg.style.color = "#00d4ff";
+            botMsg.style.margin = "5px 0";
+            botMsg.innerHTML = "<b>BOT:</b> ";
+            log.appendChild(botMsg);
+
+            function typing() {
+                if (i < texto.length) {
+                    botMsg.innerHTML += texto.charAt(i);
+                    i++;
+                    setTimeout(typing, 30);
+                    log.scrollTop = log.scrollHeight;
+                }
             }
+            typing();
         }
     </script>
-
 </body>
 </html>
-
-

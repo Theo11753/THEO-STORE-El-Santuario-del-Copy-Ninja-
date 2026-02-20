@@ -26,6 +26,7 @@
             text-shadow: 0 0 15px var(--neon-blue); 
             font-size: 2.5rem;
             margin-bottom: 5px;
+            transition: all 0.3s ease;
         }
 
         .sub-header { color: #555; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 2px; }
@@ -130,6 +131,13 @@
 
         .writing { color: #555; font-style: italic; font-size: 12px; height: 20px; }
 
+        /* --- INTEGRACIÓN DE DISEÑO PARA PANTALLAS GRANDES --- */
+        @media (min-width: 1200px) {
+            h1 { font-size: 4rem; }
+            .card { width: 350px; }
+            .btn { font-size: 1.5rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -218,3 +226,4 @@
     </script>
 </body>
 </html>
+

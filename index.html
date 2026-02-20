@@ -3,145 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THEO STORE | AI Edition</title>
+    <title>THEO STORE AI - OFICIAL</title>
     <style>
-        /* FONDO Y ESTILO GENERAL */
-        body { 
-            background: #0d0d0d;
-            color: #e0e0e0; font-family: 'Segoe UI', sans-serif; 
-            margin: 0; padding: 20px; text-align: center;
-            padding-bottom: 100px; /* Espacio para el chat */
+        body {
+            background-color: #050505;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
         }
-
-        .logo { width: 100px; height: 100px; border-radius: 20%; border: 3px solid #00d4ff; box-shadow: 0 0 15px #00d4ff; }
+        h1 { color: #00d4ff; text-shadow: 0 0 15px #00d4ff; margin-bottom: 5px; }
+        .sub { color: #555; font-size: 0.9em; margin-bottom: 30px; }
         
-        h1 { color: #fff; text-shadow: 0 0 10px #00d4ff; margin: 10px 0; }
-
-        /* GRUPO DE APPS */
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 400px;
-            margin: 20px auto;
+        .tienda-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .app-card {
-            background: #1a1a1a;
-            border-radius: 15px;
+        .tarjeta {
+            background: #111;
+            border: 2px solid #00d4ff;
+            border-radius: 20px;
             padding: 15px;
-            border: 1px solid #333;
+            width: 260px;
             transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+        }
+        .tarjeta:hover { transform: scale(1.05); box-shadow: 0 0 20px #00d4ff; }
+
+        .img-juego {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            background-color: #222;
         }
 
-        .app-card:hover { border-color: #00d4ff; transform: scale(1.05); }
-
-        .app-icon-img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
-
-        .install-btn {
-            background: #00d4ff; color: #000;
-            padding: 8px 15px; text-decoration: none;
-            border-radius: 10px; font-weight: bold; font-size: 0.8em;
-            display: block;
+        .btn-descarga {
+            background-color: #00d4ff;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            width: 80%;
         }
 
-        /* --- SISTEMA DE IA (THEO-BOT) --- */
+        /* --- SECCIÓN CHAT --- */
         #chat-container {
-            position: fixed;
-            bottom: 20px; right: 20px; left: 20px;
-            max-width: 400px; margin: auto;
-            background: #222; border: 2px solid #00d4ff;
-            border-radius: 15px; padding: 10px;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            margin: 40px auto;
+            max-width: 500px;
+            background: #0a0a0a;
+            border: 2px solid #333;
+            padding: 15px;
+            border-radius: 20px;
+        }
+        #chat-log {
+            height: 200px;
+            overflow-y: auto;
+            border-bottom: 1px solid #222;
+            margin-bottom: 15px;
             text-align: left;
+            padding: 10px;
+            font-size: 0.9em;
         }
-
-        #chat-box {
-            height: 100px; overflow-y: auto;
-            font-size: 0.9em; margin-bottom: 10px;
-            padding: 5px; color: #bbb;
-            border-bottom: 1px solid #333;
+        .input-box {
+            display: flex;
+            gap: 10px;
         }
-
-        .bot-msg { color: #00d4ff; font-weight: bold; }
-        .user-msg { color: #fff; }
-
-        #user-input {
-            width: 70%; background: #333; border: none;
-            padding: 10px; color: white; border-radius: 5px;
-        }
-
-        #send-btn {
-            width: 25%; background: #00d4ff; border: none;
-            padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;
+        input {
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #00d4ff;
+            background: #000;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://i.imgur.com/8K5M6Yp.png" class="logo">
-    <h1>THEO STORE AI</h1>
-    <p style="color: #00d4ff;">La primera tienda con Inteligencia Artificial</p>
+    <h1>👁️ THEO STORE AI 👁️</h1>
+    <div class="sub">ALIANZA X&G - BY XTHEOR</div>
 
-    <div class="app-grid">
-        <div class="app-card">
-            <img src="https://i.imgur.com/vD0X4pB.png" class="app-icon-img">
-            <h3>STUMBLE</h3>
-            <a href="#" class="install-btn">MOD MENU</a>
+    <div class="tienda-container">
+        
+        <div class="tarjeta">
+            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=DIXMAC+OFICIAL" class="img-juego">
+            <h3>DIXMAC</h3>
+            <p>Series y Películas Gratis</p>
+            <a href="LINK_DE_DIXMAC_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
         </div>
-        <div class="app-card">
-            <img src="https://i.imgur.com/S6oIuX7.png" class="app-icon-img">
-            <h3>G-DASH</h3>
-            <a href="#" class="install-btn">FULL 2.2</a>
+
+        <div class="tarjeta">
+            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=STUMBLE+MOD" class="img-juego">
+            <h3>STUMBLE MOD</h3>
+            <p>V0.64 - Skins Unlocked</p>
+            <a href="LINK_STUMBLE_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
         </div>
+
+        <div class="tarjeta">
+            <img src="https://via.placeholder.com/250x150/00d4ff/000000?text=GDASH+2.2" class="img-juego">
+            <h3>G-DASH 2.2</h3>
+            <p>Todo desbloqueado</p>
+            <a href="LINK_GDASH_AQUI" target="_blank" class="btn-descarga">DESCARGAR APK</a>
+        </div>
+
     </div>
 
     <div id="chat-container">
-        <div id="chat-box"><span class="bot-msg">THEO-BOT:</span> ¡Hola! Soy la IA de Theo. Pregúntame por un juego o salúdame.</div>
-        <input type="text" id="user-input" placeholder="Escribe aquí...">
-        <button id="send-btn" onclick="hablarConIA()">Enviar</button>
+        <h3 style="color:#00d4ff;">🤖 THEO-BOT (SISTEMA)</h3>
+        <div id="chat-log">
+            <p style="color: #00d4ff;">[IA]: XTHEOR, DixMac ha sido añadido a la base de datos.</p>
+        </div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Pregunta sobre un Mod...">
+            <button onclick="enviarMensaje()" class="btn-descarga" style="width: auto; margin:0;">JUTSU</button>
+        </div>
     </div>
 
     <script>
-        function hablarConIA() {
+        function enviarMensaje() {
             let input = document.getElementById("user-input");
-            let chatBox = document.getElementById("chat-box");
-            let userText = input.value.toLowerCase();
+            let chatLog = document.getElementById("chat-log");
+            let texto = input.value.toLowerCase();
 
-            if (userText.trim() === "") return;
+            if (texto !== "") {
+                chatLog.innerHTML += `<p><b>TÚ:</b> ${texto}</p>`;
+                
+                let respuesta = "Buscando en los archivos de la Alianza...";
+                if (texto.includes("hola")) respuesta = "¡A la orden, Sensei XTHEOR!";
+                if (texto.includes("dixmac")) respuesta = "DixMac está listo. Es la mejor opción para ver cine gratis.";
+                if (texto.includes("stumble")) respuesta = "El Mod Menu de Stumble ya está en la tienda.";
+                if (texto.includes("dash")) respuesta = "Geometry Dash 2.2 disponible para descarga.";
 
-            // Mostrar mensaje del usuario
-            chatBox.innerHTML += `<div><span class="user-msg">Tú:</span> ${input.value}</div>`;
-            
-            // Lógica de la IA (Cerebro de Theo-Bot)
-            let respuesta = "No entiendo eso, pero recuerda que soy un Ninja en entrenamiento.";
-
-            if (userText.includes("hola")) {
-                respuesta = "¡Hola, Guerrero! Bienvenido a la Theo Store. ¿Listo para los mejores mods?";
-            } else if (userText.includes("stumble")) {
-                respuesta = "El Mod de Stumble Guys está listo para descargar arriba. ¡Tiene skins gratis!";
-            } else if (userText.includes("dash") || userText.includes("geometry")) {
-                respuesta = "Geometry Dash 2.2 es el juego más buscado. ¡Dale al botón azul!";
-            } else if (userText.includes("creador") || userText.includes("theo")) {
-                respuesta = "El gran Theo es mi creador. Él es el Ninja jefe de esta web.";
-            } else if (userText.includes("ia") || userText.includes("robot")) {
-                respuesta = "Soy una Inteligencia Artificial creada con código puro para ayudarte.";
+                chatLog.innerHTML += `<p style="color: #00d4ff;"><b>BOT:</b> ${respuesta}</p>`;
+                input.value = "";
+                chatLog.scrollTop = chatLog.scrollHeight;
             }
-
-            // Responder después de un pequeño retraso
-            setTimeout(() => {
-                chatBox.innerHTML += `<div><span class="bot-msg">THEO-BOT:</span> ${respuesta}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 500);
-
-            input.value = ""; // Limpiar buscador
         }
-
-        // Permitir enviar con la tecla Enter
-        document.getElementById("user-input").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") hablarConIA();
-        });
     </script>
+
 </body>
 </html>
+
 

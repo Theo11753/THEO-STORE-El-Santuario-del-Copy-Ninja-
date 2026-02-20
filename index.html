@@ -1,53 +1,21 @@
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THEO STORE | App Store Ninja</title>
+    <title>THEO STORE | AI Edition</title>
     <style>
-        /* FONDO DINÁMICO NINJA */
+        /* FONDO Y ESTILO GENERAL */
         body { 
-            background: linear-gradient(-45deg, #0b0b0b, #1a082e, #0b0b0b, #2e0854);
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
+            background: #0d0d0d;
             color: #e0e0e0; font-family: 'Segoe UI', sans-serif; 
             margin: 0; padding: 20px; text-align: center;
+            padding-bottom: 100px; /* Espacio para el chat */
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* LOGO KAKASHI */
-        .logo { width: 110px; height: 110px; border-radius: 25%; border: 3px solid #8e44ad; box-shadow: 0 0 20px #8e44ad; margin-bottom: 10px; }
+        .logo { width: 100px; height: 100px; border-radius: 20%; border: 3px solid #00d4ff; box-shadow: 0 0 15px #00d4ff; }
         
-        h1 { margin: 5px 0; letter-spacing: 2px; text-shadow: 0 0 10px #8e44ad; color: #fff; }
-
-        /* BANNER DIXMAX VIP */
-        .destacado {
-            background: rgba(142, 68, 173, 0.2);
-            border: 2px solid #8e44ad;
-            border-radius: 20px;
-            padding: 20px;
-            max-width: 400px;
-            margin: 20px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 25px rgba(142, 68, 173, 0.4);
-        }
-
-        .btn-download {
-            background: #e67e22;
-            color: white;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            box-shadow: 0 0 15px #e67e22;
-        }
+        h1 { color: #fff; text-shadow: 0 0 10px #00d4ff; margin: 10px 0; }
 
         /* GRUPO DE APPS */
         .app-grid {
@@ -59,144 +27,121 @@
         }
 
         .app-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: #1a1a1a;
             border-radius: 15px;
             padding: 15px;
-            border: 1px solid rgba(142, 68, 173, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border: 1px solid #333;
+            transition: 0.3s;
         }
 
-        /* ICONOS HEXAGONALES */
-        .hexagon {
-            width: 65px; height: 65px; background: #000; 
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 1
- 0; letter-spacing: 2px; text-shadow: 0 0 10px #8e44ad; color: #fff; }
+        .app-card:hover { border-color: #00d4ff; transform: scale(1.05); }
 
-        /* BANNER DIXMAX (DESTACADO) */
-        .destacado {
-            background: rgba(142, 68, 173, 0.2);
-            border: 2px solid #8e44ad;
-            border-radius: 25px;
-            padding: 20px;
-            max-width: 450px;
-            margin: 20px auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(142, 68, 173, 0.3);
-        }
-
-        .btn-download {
-            background: #e67e22;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            box-shadow: 0 0 15px #e67e22;
-        }
-
-        /* CUADRÍCULA DE APPS */
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 450px;
-            margin: 20px auto;
-        }
-
-        .app-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 15px;
-            border: 1px solid rgba(142, 68, 173, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* ICONOS HEXAGONALES (COMO TUS FOTOS) */
-        .hexagon {
-            width: 60px; height: 60px; background: #000; 
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); 
-            border: 2px solid #3498db;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 10px;
-            box-shadow: 0 0 10px #3498db;
-        }
-
-        .app-icon-img { width: 40px; height: 40px; object-fit: contain; }
+        .app-icon-img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
 
         .install-btn {
-            background: #8e44ad;
-            color: white;
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-top: 8px;
+            background: #00d4ff; color: #000;
+            padding: 8px 15px; text-decoration: none;
+            border-radius: 10px; font-weight: bold; font-size: 0.8em;
+            display: block;
+        }
+
+        /* --- SISTEMA DE IA (THEO-BOT) --- */
+        #chat-container {
+            position: fixed;
+            bottom: 20px; right: 20px; left: 20px;
+            max-width: 400px; margin: auto;
+            background: #222; border: 2px solid #00d4ff;
+            border-radius: 15px; padding: 10px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            text-align: left;
+        }
+
+        #chat-box {
+            height: 100px; overflow-y: auto;
+            font-size: 0.9em; margin-bottom: 10px;
+            padding: 5px; color: #bbb;
+            border-bottom: 1px solid #333;
+        }
+
+        .bot-msg { color: #00d4ff; font-weight: bold; }
+        .user-msg { color: #fff; }
+
+        #user-input {
+            width: 70%; background: #333; border: none;
+            padding: 10px; color: white; border-radius: 5px;
+        }
+
+        #send-btn {
+            width: 25%; background: #00d4ff; border: none;
+            padding: 10px; border-radius: 5px; font-weight: bold; cursor: pointer;
         }
     </style>
 </head>
-<body onclick="hablar()">
+<body>
 
-    <img src="https://i.pinimg.com/736x/21/20/24/212024581f13376722240902f5a60a74.jpg" class="logo">
-    <h1>THEO STORE</h1>
-    <p style="color: #aaa;">Apps & Mods del Copy Ninja</p>
-
-    <div class="destacado">
-        <h2 style="color: #e67e22; margin: 0;">🎥 DIXMAX VIP</h2>
-        <p style="font-size: 0.8em;">Series y Películas Gratis</p>
-        <a href="https://www.mediafire.com/file/81mqs6hg8n4s1on/dixmax-v2.4.1.apk/file" class="btn-download">DESCARGAR</a>
-    </div>
+    <img src="https://i.imgur.com/8K5M6Yp.png" class="logo">
+    <h1>THEO STORE AI</h1>
+    <p style="color: #00d4ff;">La primera tienda con Inteligencia Artificial</p>
 
     <div class="app-grid">
-        
-        <div class="app-card" style="border-color: #00ff88;">
-            <div class="hexagon" style="border-color: #00ff88;">
-                <img src="https://play-lh.googleusercontent.com/f_Y77k9u59X0_1_z-vO2A7v1p-8_D3u6U5o5w0_X-5p0=w240-h480-rw" class="app-icon-img">
-            </div>
-            <h3 style="font-size: 0.9em; margin: 5px 0;">STUMBLE MOD</h3>
-            <a href="TU_LINK_DE_STUMBLE_GUYS_AQUI" class="install-btn" style="background: #00ff88; color: #000;">MOD APK</a>
+        <div class="app-card">
+            <img src="https://i.imgur.com/vD0X4pB.png" class="app-icon-img">
+            <h3>STUMBLE</h3>
+            <a href="#" class="install-btn">MOD MENU</a>
         </div>
-
-        <div class="app-card" style="border-color: #3498db;">
-            <div class="hexagon">🚀</div>
-            <h3 style="font-size: 0.9em; margin: 5px 0;">NET BOOST</h3>
-            <a href="#" class="install-btn" style="background: #3498db;">OPTIMIZAR</a>
+        <div class="app-card">
+            <img src="https://i.imgur.com/S6oIuX7.png" class="app-icon-img">
+            <h3>G-DASH</h3>
+            <a href="#" class="install-btn">FULL 2.2</a>
         </div>
+    </div>
 
-        <div class="app-card" style="border-color: #00d4ff;">
-            <div class="hexagon" style="border-color: #00d4ff;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Geometry_Dash_Logo.PNG" class="app-icon-img">
-            </div>
-            <h3 style="font-size: 0.9em; margin: 5px 0;">G-DASH 2.2</h3>
-            <a href="#" class="install-btn" style="background: #00d4ff;">DESCARGAR</a>
-        </div>
-
-        <div class="app-card" style="border-color: #0088cc;">
-            <div class="hexagon" style="border-color: #0088cc;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="app-icon-img">
-            </div>
-            <h3 style="font-size: 0.9em; margin: 5px 0;">SOPORTE</h3>
-            <a href="https://t.me/TU_USUARIO" class="install-btn" style="background: #0088cc;">CHAT</a>
-        </div>
-
+    <div id="chat-container">
+        <div id="chat-box"><span class="bot-msg">THEO-BOT:</span> ¡Hola! Soy la IA de Theo. Pregúntame por un juego o salúdame.</div>
+        <input type="text" id="user-input" placeholder="Escribe aquí...">
+        <button id="send-btn" onclick="hablarConIA()">Enviar</button>
     </div>
 
     <script>
-        function hablar() {
-            if (!window.yaHablo) {
-                let texto = "Hola Theo, tu tienda está activa. Descarga Dix Max, Stumble Guys o mejora tu internet ahora mismo.";
-                let mensaje = new SpeechSynthesisUtterance(texto);
-                mensaje.lang = 'es-ES';
-                window.speechSynthesis.speak(mensaje);
-                window.yaHablo = true;
+        function hablarConIA() {
+            let input = document.getElementById("user-input");
+            let chatBox = document.getElementById("chat-box");
+            let userText = input.value.toLowerCase();
+
+            if (userText.trim() === "") return;
+
+            // Mostrar mensaje del usuario
+            chatBox.innerHTML += `<div><span class="user-msg">Tú:</span> ${input.value}</div>`;
+            
+            // Lógica de la IA (Cerebro de Theo-Bot)
+            let respuesta = "No entiendo eso, pero recuerda que soy un Ninja en entrenamiento.";
+
+            if (userText.includes("hola")) {
+                respuesta = "¡Hola, Guerrero! Bienvenido a la Theo Store. ¿Listo para los mejores mods?";
+            } else if (userText.includes("stumble")) {
+                respuesta = "El Mod de Stumble Guys está listo para descargar arriba. ¡Tiene skins gratis!";
+            } else if (userText.includes("dash") || userText.includes("geometry")) {
+                respuesta = "Geometry Dash 2.2 es el juego más buscado. ¡Dale al botón azul!";
+            } else if (userText.includes("creador") || userText.includes("theo")) {
+                respuesta = "El gran Theo es mi creador. Él es el Ninja jefe de esta web.";
+            } else if (userText.includes("ia") || userText.includes("robot")) {
+                respuesta = "Soy una Inteligencia Artificial creada con código puro para ayudarte.";
             }
+
+            // Responder después de un pequeño retraso
+            setTimeout(() => {
+                chatBox.innerHTML += `<div><span class="bot-msg">THEO-BOT:</span> ${respuesta}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+
+            input.value = ""; // Limpiar buscador
         }
+
+        // Permitir enviar con la tecla Enter
+        document.getElementById("user-input").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") hablarConIA();
+        });
     </script>
 </body>
 </html>
+

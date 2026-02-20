@@ -1,20 +1,17 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THEO STORE | El Santuario del Copy Ninja</title>
+    <title>THEO STORE | App Store Ninja</title>
     <style>
-        /* FONDO ANIMADO "AURA CHIDORI" */
+        /* FONDO ANIMADO CHIDORI (AURA NINJA) */
         body { 
             background: linear-gradient(-45deg, #0b0b0b, #1a082e, #0b0b0b, #2e0854);
             background-size: 400% 400%;
             animation: gradient 10s ease infinite;
-            color: #e0e0e0; 
-            font-family: 'Segoe UI', sans-serif; 
-            text-align: center; 
-            padding: 20px; 
-            margin: 0; 
+            color: #e0e0e0; font-family: 'Segoe UI', sans-serif; 
+            margin: 0; padding: 20px; text-align: center;
         }
 
         @keyframes gradient {
@@ -23,18 +20,84 @@
             100% { background-position: 0% 50%; }
         }
 
-        .logo { 
-            width: 180px; height: 180px; 
-            border-radius: 50%; 
-            border: 4px solid #8e44ad; 
-            box-shadow: 0 0 40px #8e44ad; 
-            margin-bottom: 20px; 
-            object-fit: cover;
-            background-color: #000;
+        /* HEADER Y LOGO */
+        .logo { width: 120px; height: 120px; border-radius: 25px; border: 3px solid #8e44ad; box-shadow: 0 0 30px #8e44ad; margin-bottom: 10px; }
+        h1 { margin: 5px 0; letter-spacing: 2px; text-shadow: 0 0 10px #8e44ad; }
+
+        /* SECCIÓN DESTACADA (DIXMAX) */
+        .destacado {
+            background: rgba(142, 68, 173, 0.2);
+            border: 2px solid #8e44ad;
+            border-radius: 25px;
+            padding: 25px;
+            max-width: 500px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(142, 68, 173, 0.3);
         }
 
-        h1 { color: #8e44ad; text-shadow: 0 0 15px rgba(142, 68, 173, 0.8); letter-spacing: 2px; font-size: 2.2em; margin-bottom: 5px; }
-        
-        .btn { 
-            background: #8e44ad; color: white; padding: 15px 30px; 
-            text
+        .btn-download {
+            background: #e67e22;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+            box-shadow: 0 0 20px #e67e22;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* DISEÑO DE CUADRÍCULA PARA APPS */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 550px;
+            margin: 20px auto;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px;
+            border: 1px solid rgba(142, 68, 173, 0.3);
+            transition: 0.3s;
+        }
+
+        .app-card:hover { transform: translateY(-5px); background: rgba(142, 68, 173, 0.1); }
+
+        .app-icon { width: 60px; height: 60px; border-radius: 12px; margin-bottom: 10px; }
+
+        .install-btn {
+            background: #8e44ad;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* ICONO HEXAGONAL SPEED MASTER */
+        .hexagon {
+            width: 50px; height: 50px; background: #000; 
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); 
+            margin: 0 auto 10px; border: 2px solid #3498db;
+            display: flex; align-items: center; justify-content: center; color: #3498db;
+        }
+    </style>
+</head>
+<body onclick="hablar()">
+
+    <img src="

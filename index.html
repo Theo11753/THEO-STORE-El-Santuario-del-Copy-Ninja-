@@ -19,6 +19,7 @@
         }
 
         h1 { color: var(--neon-blue); text-shadow: 0 0 15px var(--neon-blue); font-size: 2.5rem; }
+        .sub-header { color: #555; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 2px; }
 
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
 
@@ -31,6 +32,8 @@
             border-color: var(--neon-blue); transform: translateY(-10px);
             box-shadow: 0 0 20px var(--neon-blue);
         }
+
+        .card img { width: 100%; border-radius: 10px; height: 140px; object-fit: cover; }
 
         .btn { 
             display: inline-block; background: var(--neon-blue); color: black; 
@@ -53,31 +56,107 @@
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
         }
 
-        #log { height: 150px; overflow-y: auto; text-align: left; margin-bottom: 10px; padding-right: 5px; }
+        #log { height: 180px; overflow-y: auto; text-align: left; margin-bottom: 10px; padding-right: 5px; }
         #log::-webkit-scrollbar { width: 5px; }
         #log::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
         
+        .status { color: #555; font-style: italic; font-size: 12px; height: 20px; text-align: left; }
+
         .chat-input { display: flex; gap: 10px; }
         input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #000; color: white; outline: none; }
         input:focus { border-color: var(--neon-blue); }
+
+        .jutsu-btn { background: var(--neon-blue); border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <h1>👁️ THEO STORE AI 👁️</h1>
-    <p style="color: #555;">ALIANZA X&G | ACTUALIZADO PARA TV</p>
+    <p class="sub-header">ALIANZA X&G | MODO TV ACTIVO</p>
 
     <div class="container">
         <div class="card">
-            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=DIXMAX+V2.4.1" style="width:100%; border-radius:10px;">
+            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=DIXMAX+V2.4.1" alt="DixMax">
             <h3>DIXMAX</h3>
-            <p>Cine y Series Gratis v2.4.1</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Cine y Series Gratis v2.4.1</p>
             <a href="https://www.mediafire.com/file/81mqs6hg8n4s1on/dixmax-v2.4.1.apk/file" target="_blank" class="btn">DESCARGAR</a>
         </div>
 
         <div class="card">
-            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=STUMBLE+V0.95.5" style="width:100%; border-radius:10px;">
+            <img src="https://via.placeholder.com/250x140/00d4ff/000000?text=STUMBLE+V0.95.5" alt="Stumble">
             <h3>STUMBLE MOD</h3>
-            <p>V0.95.5 Mod Menu</p>
+            <p style="color: #aaa; font-size: 0.9rem;">V0.95.5 MOD APK</p>
+            <a href="https://www.mediafire.com/file/we4xzaz2d0kink7/Stumble_Guys_v0.95.5_MOD.apk/file" target="_blank" class="btn">DESCARGAR</a>
+        </div>
+    </div>
 
+    <div id="chat">
+        <h4 style="color:var(--neon-blue); display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 15px 0;">
+            <span style="width:10px; height:10px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 5px #00ff00;"></span>
+            THEO-BOT ONLINE
+        </h4>
+        <div id="log">
+            <p style="color:var(--neon-blue);"><b>[BOT]:</b> Sistema cargado. ¿Qué buscas hoy, Maestro XTHEOR?</p>
+        </div>
+        <div id="status" class="status"></div>
+        <div class="chat-input">
+            <input type="text" id="msg" placeholder="Habla con la Alianza..." autocomplete="off">
+            <button onclick="hablar()" class="jutsu-btn">JUTSU</button>
+        </div>
+    </div>
 
+    <script>
+        const box = document.getElementById("msg");
+        const log = document.getElementById("log");
+        const status = document.getElementById("status");
+
+        // Activar con tecla Enter
+        box.addEventListener("keypress", (e) => { if (e.key === "Enter") hablar(); });
+
+        function hablar() {
+            let t = box.value.trim().toLowerCase();
+            if(!t) return;
+
+            log.innerHTML += `<p style="margin: 5px 0;"><b>Tú:</b> ${t}</p>`;
+            box.value = "";
+            log.scrollTop = log.scrollHeight;
+
+            status.innerHTML = "Consultando Alianza X&G...";
+            
+            setTimeout(() => {
+                status.innerHTML = "";
+                let r = "No encuentro ese archivo. Prueba con 'DixMax' o 'Stumble'.";
+                
+                if(t.includes("dixmax")) {
+                    r = "¡Localizado! He actualizado el link de DixMax a la v2.4.1. ¡Dale al botón azul!";
+                } else if(t.includes("stumble")) {
+                    r = "Stumble Guys v0.95.5 detectado. El mod menú está activo y listo.";
+                } else if(t.includes("hola") || t.includes("hey") || t.includes("oye")) {
+                    r = "¡A la orden, XTHEOR! Todo el sistema está operativo. ¿Qué mod buscas hoy?";
+                }
+
+                typeWriter(r);
+            }, 800);
+        }
+
+        function typeWriter(texto) {
+            let i = 0;
+            let botMsg = document.createElement("p");
+            botMsg.style.color = "#00d4ff";
+            botMsg.style.margin = "5px 0";
+            botMsg.innerHTML = "<b>BOT:</b> ";
+            log.appendChild(botMsg);
+
+            function typing() {
+                if (i < texto.length) {
+                    botMsg.innerHTML += texto.charAt(i);
+                    i++;
+                    setTimeout(typing, 30);
+                    log.scrollTop = log.scrollHeight;
+                }
+            }
+            typing();
+        }
+    </script>
+</body>
+</html>

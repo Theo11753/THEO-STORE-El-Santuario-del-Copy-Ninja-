@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THEO STORE | App Store Ninja</title>
     <style>
-        /* FONDO DINÁMICO (AURA NINJA) */
+        /* FONDO DINÁMICO NINJA */
         body { 
             background: linear-gradient(-45deg, #0b0b0b, #1a082e, #0b0b0b, #2e0854);
             background-size: 400% 400%;
@@ -20,9 +20,59 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* HEADER */
-        .logo { width: 110px; height: 110px; border-radius: 20px; border: 3px solid #8e44ad; box-shadow: 0 0 25px #8e44ad; margin-bottom: 10px; }
+        /* LOGO KAKASHI */
+        .logo { width: 110px; height: 110px; border-radius: 25%; border: 3px solid #8e44ad; box-shadow: 0 0 20px #8e44ad; margin-bottom: 10px; }
+        
         h1 { margin: 5px 0; letter-spacing: 2px; text-shadow: 0 0 10px #8e44ad; color: #fff; }
+
+        /* BANNER DIXMAX VIP */
+        .destacado {
+            background: rgba(142, 68, 173, 0.2);
+            border: 2px solid #8e44ad;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(142, 68, 173, 0.4);
+        }
+
+        .btn-download {
+            background: #e67e22;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            box-shadow: 0 0 15px #e67e22;
+        }
+
+        /* GRUPO DE APPS */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(142, 68, 173, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ICONOS HEXAGONALES */
+        .hexagon {
+            width: 65px; height: 65px; background: #000; 
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 1
+ 0; letter-spacing: 2px; text-shadow: 0 0 10px #8e44ad; color: #fff; }
 
         /* BANNER DIXMAX (DESTACADO) */
         .destacado {
